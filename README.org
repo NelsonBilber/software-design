@@ -1,7 +1,6 @@
 #+TITLE: Software Design
 #+AUTHOR: Nelson Rodrigues
 
-* Design Patterns
 * S.O.L.I.D
 ** Class Design (5)
 *** SRP - The Single Responsibility Principle
@@ -96,6 +95,8 @@ Optimize resources when working with a very large number of objects
 Adds a level of indirection for most complex tasks. Is works as an interface for something else.
 *** Source Code
 [[https://github.com/NelsonBilber/design.patterns.Gof][Link]]
+** Model-View-ViewModel (MVVM)
+[[https://github.com/NelsonBilber/design.patterns.MVVM][Link]]
 * Refactor Techniques
 ** Clean Code 
 *** Obfuscating code smells
