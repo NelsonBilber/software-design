@@ -94,6 +94,8 @@ Interface for simplify comunications with complex objects
 Optimize resources when working with a very large number of objects
 **** Proxy:
 Adds a level of indirection for most complex tasks. Is works as an interface for something else.
+*** Source Code
+[[https://github.com/NelsonBilber/design.patterns.Gof][Link]]
 * Refactor Techniques
 ** Clean Code 
 *** Obfuscating code smells
@@ -375,7 +377,6 @@ Adds a level of indirection for most complex tasks. Is works as an interface for
 - Refactoring with StoreItem
 - Testing Individual Strategies
 - Adding Conjured Item Support
-
 
 * Links
 [[http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod][PrinciplesOfOod (Uncle Bob)]]
