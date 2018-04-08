@@ -28,7 +28,7 @@ T*he dependency graph of packages must have no cycles
 D*epend in direction of stability
 **** SAP - The Stable Abstractions Principle
 Abstractness increases with stability
-** GRASP
+** G.R.A.S.P. 
 *** Controller
 The controller pattern assigns the responsibility of dealing with system events to a non-UI class that represents the overall system or a use case scenario
 *** Creator
@@ -403,6 +403,9 @@ Adds a level of indirection for most complex tasks. Is works as an interface for
 
 * Links
 [[https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)][S.O.L.I.D.]]
-[[http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod][PrinciplesOfOod (Uncle Bob)]]
-[[https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)][G.R.A.S.P. (wikipedia)]]
-[[https://pt.wikipedia.org/wiki/GRASP_(padr%C3%A3o_orientado_a_objetos)#CITEREFLarman2005][G.R.A.S.P.]]
+[[http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod][
+PrinciplesOfOod (Uncle Bob)]]
+[[https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)][
+G.R.A.S.P. (wikipedia)]]
+[[https://pt.wikipedia.org/wiki/GRASP_(padr%C3%A3o_orientado_a_objetos)#CITEREFLarman2005][
+G.R.A.S.P.]]
