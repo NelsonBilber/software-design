@@ -5,27 +5,27 @@
 ** S.O.L.I.D
 *** Class Design (5)
 **** SRP - The Single Responsibility Principle
-T*he class should have one, and only one, reason to change
+The class should have one, and only one, reason to change
 **** OCP - The Open Closed Principle
-Y*ou should be able to extend a class behaviour, without modifying it
+You should be able to extend a class behaviour, without modifying it
 **** LSP - The Liskov Substitution
-D*erived classes must be substitutable for their base classes
+Derived classes must be substitutable for their base classes
 **** ISP - The Interface Segregation Principle
-M*ake fine grained interfaces that are client specific
+Make fine grained interfaces that are client specific
 **** DIP - The Dependency Inversion Principle
-D*epend on abstractions, not on concretions
+Depend on abstractions, not on concretions
 *** Pack Cohesion (3)
 **** REP- The Release Reuse Equivalency
-T*he granule of reuse is the granule of release
+The granule of reuse is the granule of release
 **** CCP - The Common Closure Principle
-C*lasses that change together are packed together
+Classes that change together are packed together
 **** CRP - The Common Reuse Principle
-C*lasses that are used together are packed together
+Classes that are used together are packed together
 *** Couple Between Packaged (3)
 **** ADP - The Acyclic Dependencies Principle
-T*he dependency graph of packages must have no cycles
+The dependency graph of packages must have no cycles
 **** SDP - The Stable Dependencies Principle 
-D*epend in direction of stability
+Depend in direction of stability
 **** SAP - The Stable Abstractions Principle
 Abstractness increases with stability
 ** G.R.A.S.P. 
@@ -403,9 +403,12 @@ Adds a level of indirection for most complex tasks. Is works as an interface for
 
 * Links
 [[https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)][S.O.L.I.D.]]
+
 [[http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod][
 PrinciplesOfOod (Uncle Bob)]]
+
 [[https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)][
 G.R.A.S.P. (wikipedia)]]
+
 [[https://pt.wikipedia.org/wiki/GRASP_(padr%C3%A3o_orientado_a_objetos)#CITEREFLarman2005][
 G.R.A.S.P.]]
