@@ -1,20 +1,28 @@
 #+TITLE: Software Design
 #+AUTHOR: Nelson Rodrigues
 
-* Object Oriented Design
-** S.O.L.I.D
-[[file:solid.org][link]]
-** G.R.A.S.P.
-[[file:grasp.org][link]]
-* Design Patterns
-[[file:dp.org][link]]
-* Refactor Techniques
-[[file:refactor.org][link]]
-* Links
-[[https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)][S.O.L.I.D.]]
+*Object Oriented Design*
+
+- S.O.L.I.D [[file:solid.org][link]]
+
+- G.R.A.S.P.[[file:grasp.org][link]]
+
+*Design Patterns*
+[[file:dp.org][
+link]]
+
+*Refactor Techniques*
+
+ [[file:refactor.org][link]]
+
+*Links*
+[[https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)][
+
+S.O.L.I.D.]]
 [[http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod][
 PrinciplesOfOod (Uncle Bob)]]
 [[https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)][
+
 G.R.A.S.P. (wikipedia)]]
 [[https://pt.wikipedia.org/wiki/GRASP_(padr%C3%A3o_orientado_a_objetos)#CITEREFLarman2005][
 G.R.A.S.P.]]
