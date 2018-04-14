@@ -3,23 +3,13 @@
 
 * Object Oriented Design
 ** S.O.L.I.D
-
-
+[[file:solid.org][link]]
 ** G.R.A.S.P.
-
-
+[[file:grasp.org][link]]
 * Design Patterns
-** Gof- Gang of Four
-
-
-** Model-View-ViewModel (MVVM)
-
-
+[[file:dp.org][link]]
 * Refactor Techniques
-** Clean Code
-
-
-
+[[file:refactor.org][link]]
 * Links
 [[https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)][S.O.L.I.D.]]
 [[http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod][
