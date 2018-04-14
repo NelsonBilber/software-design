@@ -1,0 +1,26 @@
+#+TITLE: Software Design
+#+AUTHOR: Nelson Rodrigues
+
+** G.R.A.S.P. 
+*** Controller
+The controller pattern assigns the responsibility of dealing with system events to a non-UI class that represents the overall system or a use case scenario
+*** Creator
+Creation of objects
+*** High Cohesion
+High cohesion is an evaluative pattern that attempts to keep objects appropriately focused, manageable and understandable. High cohesion is generally used in support of low coupling.
+*** Indirection
+The indirection pattern supports low coupling (and reuse potential) between two elements by assigning the responsibility of mediation between them to an intermediate object. An example of this is the introduction of a controller component for mediation between data (model) and its representation (view) in the model-view-controller pattern.
+*** Information Expert
+Information expert (also expert or the expert principle) is a principle used to determine where to delegate responsibilities. These responsibilities include methods, computed fields, and so on.
+Using the principle of information expert, a general approach to assigning responsibilities is to look at a given responsibility, determine the information needed to fulfill it, and then determine where that information is stored
+*** Low Coupling
+Coupling is a measure of how strongly one element is connected to, has knowledge of, or relies on other elements. Low coupling is an evaluative pattern that dictates how to assign responsibilities to support
+- lower dependency between the classes,
+- change in one class having lower impact on other classes,
+- higher reuse potential.
+*** Polymorphism
+According to polymorphism principle, responsibility of defining the variation of behaviors based on type is assigned to the type for which this variation happens. This is achieved using polymorphic operations. The user of the type should use polymorphic operations instead of explicit branching based on type.
+*** Protected variations
+The protected variations pattern protects elements from the variations on other elements (objects, systems, subsystems) by wrapping the focus of instability with an interface and using polymorphism to create various implementations of this interface.
+*** Pure Fabrication
+A pure fabrication is a class that does not represent a concept in the problem domain, specially made up to achieve low coupling, high cohesion, and the reuse potential thereof derived (when a solution presented by the information expert pattern does not). This kind of class is called a "service" in domain-driven design.		

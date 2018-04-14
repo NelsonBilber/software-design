@@ -1,0 +1,29 @@
+#+TITLE: Software Design
+#+AUTHOR: Nelson Rodrigues
+
+* S.O.L.I.D
+** Class Design (5)
+**** SRP - The Single Responsibility Principle
+T*he class should have one, and only one, reason to change
+**** OCP - The Open Closed Principle
+Y*ou should be able to extend a class behaviour, without modifying it
+**** LSP - The Liskov Substitution
+D*erived classes must be substitutable for their base classes
+**** ISP - The Interface Segregation Principle
+M*ake fine grained interfaces that are client specific
+**** DIP - The Dependency Inversion Principle
+D*epend on abstractions, not on concretions
+** Pack Cohesion (3)
+**** REP- The Release Reuse Equivalency
+T*he granule of reuse is the granule of release
+**** CCP - The Common Closure Principle
+C*lasses that change together are packed together
+**** CRP - The Common Reuse Principle
+C*lasses that are used together are packed together
+** Couple Between Packaged (3)
+**** ADP - The Acyclic Dependencies Principle
+T*he dependency graph of packages must have no cycles
+**** SDP - The Stable Dependencies Principle 
+D*epend in direction of stability
+**** SAP - The Stable Abstractions Principle
+Abstractness increases with stability

@@ -1,0 +1,30 @@
+#+TITLE: Software Design
+#+AUTHOR: Nelson Rodrigues
+
+* Object Oriented Design
+** S.O.L.I.D
+
+
+** G.R.A.S.P.
+
+
+* Design Patterns
+** Gof- Gang of Four
+
+
+** Model-View-ViewModel (MVVM)
+
+
+* Refactor Techniques
+** Clean Code
+
+
+
+* Links
+[[https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)][S.O.L.I.D.]]
+[[http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod][
+PrinciplesOfOod (Uncle Bob)]]
+[[https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)][
+G.R.A.S.P. (wikipedia)]]
+[[https://pt.wikipedia.org/wiki/GRASP_(padr%C3%A3o_orientado_a_objetos)#CITEREFLarman2005][
+G.R.A.S.P.]]
