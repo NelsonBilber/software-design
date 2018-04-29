@@ -1,7 +1,7 @@
 #+TITLE: Software Design
 #+AUTHOR: Nelson Rodrigues
 
-This is a broad topic, it could go from system coding tricks to large scale system design.
+This is a broad topic, it could go from simple coding tricks to large scale system design.
 
 
 *Object Oriented Design*
@@ -12,11 +12,11 @@ This is a broad topic, it could go from system coding tricks to large scale syst
 
 *Design Patterns*
 
-[[file:dp.org][link]]
+[[file:dp.org][Gof]]
 
 *Refactor Techniques*
 
-[[file:refactor.org][link]]
+[[file:refactor.org][Clean Code]]
 
 *Links*
 
