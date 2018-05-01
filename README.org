@@ -3,27 +3,41 @@
 
 This is a broad topic, it could go from simple coding tricks to large scale system design.
 
+** Object Oriented Design
 
-*Object Oriented Design*
+Let's start from a Object Oriented paradigm, some basic concepts has encapsulation, porlimosrphism,..., are the normative. The following topics talks about how to organize tour source code, to avoid repetitions and code smells.
 
 - S.O.L.I.D [[file:solid.org][link]]
 
 - G.R.A.S.P.[[file:grasp.org][link]]
 
-*Design Patterns*
+** Design Patterns
 
+Design Patterns are common solutions to common problems. Some people are against its, however I think they are handy, special to recognize/share code developed by other programmers. 
+
+*** Gang of Four
 [[file:dp.org][Gof]]
 
-*Refactor Techniques*
+*** Model View Controller (MVC) 
+
+This design architectural patterns is very common, used on apple related apps, Asp.net as Qt Apps ("well sort of ...")
+
+[[https://github.com/NelsonBilber/Qt/tree/master/QTableViewClicks%0A%0A%0A%0A][QTable]]
+
+*** Model-View-ViewModel (MVVM)
+
+A tailored version of MVC and Model View Presenter (MVP) for Windows Presentation Application (WPF)
+
+[[https://github.com/NelsonBilber/design.patterns.MVVM][Source Code]]
+
+** Refactor Techniques
+
+Well most of time we are do some refactor with the aim to improve the source code to avoid the problematic technical debt. 
+
+Next link describe some techniques that we could use. 
 
 [[file:refactor.org][Clean Code]]
 
-*Links*
+** Links
 
-[[https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)][S.O.L.I.D.]] 
-
-[[http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod][PrinciplesOfOod (Uncle Bob)]] 
-
-[[https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)][G.R.A.S.P. (wikipedia)]] 
-
-[[https://pt.wikipedia.org/wiki/GRASP_(padr%C3%A3o_orientado_a_objetos)#CITEREFLarman2005][G.R.A.S.P.]]
+[[https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)][S.O.L.I.D.]] [[http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod][PrinciplesOfOod (Uncle Bob)]] [[https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)][G.R.A.S.P. (wikipedia)]] [[https://pt.wikipedia.org/wiki/GRASP_(padr%C3%A3o_orientado_a_objetos)#CITEREFLarman2005][G.R.A.S.P.]]
