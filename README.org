@@ -20,7 +20,7 @@ Design Patterns are common solutions to common problems. Some people are against
 
 *** Model View Controller (MVC) 
 
-This design architectural pattern is very common, used on apple related apps, Asp.net as Qt Apps ("well sort of ...")
+This design architectural pattern is very common, used on apple related apps, Asp.net, Qt Apps ("well sort of ...")
 
 [[https://github.com/NelsonBilber/Qt/tree/master/QTableViewClicks%0A%0A%0A%0A][QTable]]
 
