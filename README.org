@@ -22,7 +22,7 @@ Design Patterns are common solutions to common problems. Some people are against
 
 This design architectural pattern is very common, used on apple related apps, Asp.net, Qt Apps ("well sort of ...")
 
-[[https://github.com/NelsonBilber/Qt/tree/master/QTableViewClicks%0A%0A%0A%0A][QTable]]
+[[https://github.com/NelsonBilber/Qt/tree/master/QTableViewClicks][QTable]]
 
 *** Model-View-ViewModel (MVVM)
 
