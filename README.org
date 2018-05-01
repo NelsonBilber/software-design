@@ -32,9 +32,9 @@ A tailored version of MVC and Model View Presenter (MVP) for Windows Presentatio
 
 ** Refactor Techniques
 
-Well most of time we are do some refactor with the aim to improve the source code to avoid the problematic technical debt. 
+Well most of time we are doing some refactor with the aim to improve the source code to avoid the problematic technical debt. 
 
-Next link describe some techniques that we could use. 
+Next link describe some techniques that we could use: 
 
 [[file:refactor.org][Clean Code]]
 
