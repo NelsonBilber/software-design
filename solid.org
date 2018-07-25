@@ -27,14 +27,14 @@ bool Integration::ImportData(Document doc){
 
 /*
 
-*Problems:*
+Problems:
 
-(1) - This class has two function: parse a XML file and present on GUI
- the result
+(1) - This class has two function: parse a XML file and present on GUI the result
 (2) - The paser works for XML files, and it we want to parse a JSON
  file this will lead to a major refactor
 
-*Possible Solution:*
+Possible Solution:
+
 - (1) declouple classes by responsability adding a new levels os indirection
 
 */
@@ -99,13 +99,13 @@ void Integration::Import() {
 
 /*
 
-*Problems:*
+Problems:
 
 Integration class is not closed to modification. Every time we need to import a 
 new file type, we have to add a new enums, add new parser ...
 
 
-*Possible solution:*
+Possible solution:
 
 User inheritance and polimorphy to create multiple parsers with specific
  implementations acording the file type to import
@@ -176,11 +176,11 @@ void Penguin::setAltitude(double altitude)
 
 /*
 
-*Problems:*
+Problems:
 
 penguins can't fly so it's  a Object Oriented trap !!
 
-*Solution:*
+Solution:
  
 In C++ we can use multiple inheritance
 
@@ -258,12 +258,12 @@ class EconomicPrinterDevice(): ISmartDevice {
 
 /*
 
-*Problem:*
+Problem:
 
 (1) If we inherit from ISmartDevice we have to override all methods even it
 we don't use it. What leads to empty methods, bad returns code, ....
 
-*Solution:*
+Solution:
 
 Had new levels of indirections, e.g using multiple inheritance
 
@@ -297,6 +297,61 @@ class EconomicPrinterDevice: public IPrinterDevice, public IScannerDevice{
 #+end_src
 
 *** DIP - The Dependency Inversion Principle
+
+
+Depend on abstractions, not on concretions. High modules should not depend upon low levels
+
+#+begin_src C++
+
+class Button{
+private:
+	unique_ptr<Light> _light;	
+public:
+	void PressOn(){
+		_light.TurnOn();  //(1)
+	}
+};
+
+/*
+
+Problem:
+
+(1) - Class button should not depend on upper class Light
+
+Solution:
+
+Add a middle man, and Interface that can had a new level of indirection		
+
+*/
+
+class Device {
+public:
+	void TurnOn();
+	void TurnOff();
+};
+
+class Light: public Device {
+public:
+	void TurnOn() {
+		// Do Something ...
+	}
+	
+	void TurnOff() {
+		// Do Something ... 
+	}
+};
+
+class Button {
+private:
+	unique_ptr<Device> _device; 
+public:
+	void PressOn() {
+		_device.TurnOn();
+	}
+};
+
+#+end_src
+
 ** Pack Cohesion (3)
 *** REP- The Release Reuse Equivalency
 The granule of reuse is the granule of release
