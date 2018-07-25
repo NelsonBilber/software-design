@@ -31,11 +31,11 @@ Problems:
 
 (1) - This class has two function: parse a XML file and present on GUI the result
 (2) - The paser works for XML files, and it we want to parse a JSON
- file this will lead to a major refactor
+file this will lead to a major refactor
 
 Possible Solution:
 
-- (1) declouple classes by responsability adding a new levels os indirection
+(1) declouple classes by responsability adding a new levels os indirection
 
 */
 
@@ -108,7 +108,7 @@ new file type, we have to add a new enums, add new parser ...
 Possible solution:
 
 User inheritance and polimorphy to create multiple parsers with specific
- implementations acording the file type to import
+implementations acording the file type to import
 
 */
 
@@ -178,7 +178,7 @@ void Penguin::setAltitude(double altitude)
 
 Problems:
 
-penguins can't fly so it's  a Object Oriented trap !!
+Penguins can't fly so it's  a Object Oriented trap !!
 
 Solution:
  
@@ -353,16 +353,29 @@ public:
 #+end_src
 
 ** Pack Cohesion (3)
+
 *** REP- The Release Reuse Equivalency
+
 The granule of reuse is the granule of release
+
 *** CCP - The Common Closure Principle
+
 Classes that change together are packed together
+
 *** CRP - The Common Reuse Principle
+
 Classes that are used together are packed together
+
 ** Couple Between Packaged (3)
+
 *** ADP - The Acyclic Dependencies Principle
+
 The dependency graph of packages must have no cycles
+
 *** SDP - The Stable Dependencies Principle 
+
 Depend in direction of stability
+
 *** SAP - The Stable Abstractions Principle
+
 Abstractness increases with stability
