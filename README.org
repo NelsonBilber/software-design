@@ -7,8 +7,6 @@ This is a broad topic, it could go from simple coding tricks to large scale syst
 
 Let's start from programming tips using Object Oriented paradigm. Some basic concepts like encapsulation, polymorphic behavior,..., are the normative. The following topics talks about how to organize tour source code, to avoid repetitions and code smells.
 
-*** Solid
-
 - S.O.L.I.D [[file:solid.org][link]]
 
 - G.R.A.S.P.[[file:grasp.org][link]]
