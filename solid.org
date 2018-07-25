@@ -4,15 +4,290 @@
 * S.O.L.I.D
 ** Class Design (5)
 **** SRP - The Single Responsibility Principle
-The class should have one, and only one, reason to change
+
+The class should have one, and only one, reason to change. A class have higth cohesion if it's behaviours are coselly related.
+
+#+begin_src C++
+
+class Integration {
+private:
+	bool PaseXML(Document doc);	
+public:	
+	bool ImportData(Document doc);
+		
+};
+
+
+bool Integration::ImportData(Document doc){
+	bool result = ParseXML(doc); // (2)
+	ShowGUIDialogBox(result);    // (1)
+	return result;
+}
+
+/*
+
+*Problems:*
+
+(1) - This class has two function: parse a XML file and present on GUI the result
+(2) - The paser works for XML files, and it we want to parse a JSON file this will lead to a major refactor
+
+*Possible Solution:*
+- (1) declouple classes by responsability adding a new levels os indirection
+
+*/
+
+
+class Integration {
+private:
+	bool PaseXML(Document doc);	
+	IParser* _parser;
+	GUI* _gui;
+public:	
+	bool ImportData(Document doc);
+		
+};
+
+
+bool Integration::ImportData(Document doc){
+	bool result =  _parser->importXMlFile(doc); //(1)
+	_gui->printMessage(result);                 //(1)
+	return result; 
+}
+
+#+end_src
+
 **** OCP - The Open Closed Principle
+
 You should be able to extend a class behaviour, without modifying it
+
+#+begin_src C++
+
+enum FileType
+{
+	XML, 
+	JSON
+};
+
+class Integration {
+public:
+	void setFileType(FileType ftype);
+	void Import();
+private:
+	FileType _fileType;
+};
+
+
+void Integration:setFileType(FileType ftype){
+	_fileType = ftype;
+}
+
+void Integration::Import() {
+	switch(_ftype)	{   //(1)
+		case XML:
+			ParseXML(...);
+			break;	
+		case JSON:
+			ParseJSON(...);
+			break;
+		\\...
+		
+	}
+}
+
+/*
+
+*Problems:*
+
+Integration class is not closed to modification. Every time we need to import a new file type, we have to add a new enums, add new parser ...
+
+
+*Possible solution:*
+
+User inheritance and polimorphy to create multiple parsers with specific implementations acording the file type to import
+
+*/
+
+class IParser {
+public:
+	virtual void Import(...) = 0;
+};
+
+class XMLParser: public IParser {
+public:
+	XMLParser() = default;
+	virtual void Import(...) override;	 		
+};
+
+class JSONParser: public IParser {
+public:
+	JSONParser() = default;
+	virtual void Import(...) final;	 		
+};
+
+class Integration {
+public:
+	Integration(shared_prt<IParser> parser)
+	void setFileType(FileType ftype);
+	void Import();
+private:
+	shared_prt<IParser> _parser;
+};
+
+void Integration::Import() {
+	parser->Import(...);
+}	
+
+// How to use it
+
+Integration integration(make_shared<XMLparser>());
+
+// or
+
+Integration integration(make_shared<JSONparser>());
+
+#+end_src
+
 **** LSP - The Liskov Substitution
-Derived classes must be substitutable for their base classes
+
+Derived classes must be substitutable for their base classes. A nice example using C++ would be using pointers, functions that use pointers from base class can use objects from derived classes without knowing it.
+
+#+begin_src C++
+
+class Bird {
+public:
+    virtual void setLocation(double longitude, double latitude) = 0;
+    virtual void setAltitude(double altitude) = 0;
+    virtual void draw() = 0;
+};
+
+
+void Penguin::setAltitude(double altitude)
+{
+    //altitude can't be set because penguins can't fly
+    //this function does nothing
+}
+
+/*
+
+*Problems:*
+
+penguins can't fly so it's  a Object Oriented trap !!
+
+*Solution:*
+ 
+In C++ we can use multiple inheritance
+
+*/
+
+
+class Bird {
+public:
+    virtual void draw() = 0;
+    virtual void setLocation(double longitude, double latitude) = 0;
+};
+
+class FlightfulBird : public Bird {
+public:
+    virtual void setAltitude(double altitude) = 0;
+};
+
+
+class Pengin: public Bird {
+	// ...
+};
+
+class Eagle: public Bird, public FlightfulBird {
+	// ...
+}
+
+#+end_src
+
+source code based on: [[https://www.tomdalling.com/blog/software-design/solid-class-design-the-liskov-substitution-principle/][SOLID Class Design: The Liskov Substitution Principle]]
+
 **** ISP - The Interface Segregation Principle
-Make fine grained interfaces that are client specific
+
+Make fine grained interfaces that are client specific. Clients should not be forced to depend on ippon interfaces that they not use.
+
+#+begin_src C++
+
+class ISmartDevice {
+	virtual void Print() = 0;
+	virtual void Fax() = 0;
+	virtual void Scan() = 0;
+};
+
+class MultiPrinterDevice(): ISmartDevice {
+
+	virtual void Print() override {
+		// do something ...	
+	}
+
+	virtual void Fax() override {
+		// do something ...	
+	}
+
+	virtual void Scan() override {
+		// do something ...	
+	}
+};
+
+
+class EconomicPrinterDevice(): ISmartDevice {
+
+	virtual void Print() {
+		// do something ...	
+	}
+
+	virtual void Fax() {         // (1)
+		// do nothing ...	
+	}
+
+	virtual void Scan() {
+		// do something ...	
+	}
+};
+
+
+/*
+
+*Problem:*
+
+(1) If we inherit from ISmartDevice we have to override all methods even it we don't use it. What leads to empty methods, bad returns code, ....
+
+*Solution:*
+
+Had new levels of indirections, e.g using multiple inheritance
+
+*/
+
+class IPrinterDevice {
+	virtual void Print() = 0;
+};
+
+class IFaxDevice {
+	virtual void Fax() = 0;
+};
+
+class IScannertDevice {
+	virtual void Scan() = 0;
+};
+
+class MultiPrinterDevice: public IPrinterDevice, public IFaxDevice, public IScannerDevice{
+
+//...
+
+};
+
+class EconomicPrinterDevice: public IPrinterDevice, public IScannerDevice{
+
+//...
+
+};
+
+
+#+end_src
+
 **** DIP - The Dependency Inversion Principle
-Depend on abstractions, not on concretions
 ** Pack Cohesion (3)
 **** REP- The Release Reuse Equivalency
 The granule of reuse is the granule of release
