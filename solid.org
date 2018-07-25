@@ -3,9 +3,10 @@
 
 * S.O.L.I.D
 ** Class Design (5)
-**** SRP - The Single Responsibility Principle
+*** SRP - The Single Responsibility Principle
 
-The class should have one, and only one, reason to change. A class have higth cohesion if it's behaviours are coselly related.
+The class should have one, and only one, reason to change. A class have
+hight cohesion if it's behaviours are coselly related.
 
 #+begin_src C++
 
@@ -28,8 +29,10 @@ bool Integration::ImportData(Document doc){
 
 *Problems:*
 
-(1) - This class has two function: parse a XML file and present on GUI the result
-(2) - The paser works for XML files, and it we want to parse a JSON file this will lead to a major refactor
+(1) - This class has two function: parse a XML file and present on GUI
+ the result
+(2) - The paser works for XML files, and it we want to parse a JSON
+ file this will lead to a major refactor
 
 *Possible Solution:*
 - (1) declouple classes by responsability adding a new levels os indirection
@@ -56,7 +59,7 @@ bool Integration::ImportData(Document doc){
 
 #+end_src
 
-**** OCP - The Open Closed Principle
+*** OCP - The Open Closed Principle
 
 You should be able to extend a class behaviour, without modifying it
 
@@ -98,12 +101,14 @@ void Integration::Import() {
 
 *Problems:*
 
-Integration class is not closed to modification. Every time we need to import a new file type, we have to add a new enums, add new parser ...
+Integration class is not closed to modification. Every time we need to import a 
+new file type, we have to add a new enums, add new parser ...
 
 
 *Possible solution:*
 
-User inheritance and polimorphy to create multiple parsers with specific implementations acording the file type to import
+User inheritance and polimorphy to create multiple parsers with specific
+ implementations acording the file type to import
 
 */
 
@@ -147,9 +152,11 @@ Integration integration(make_shared<JSONparser>());
 
 #+end_src
 
-**** LSP - The Liskov Substitution
+*** LSP - The Liskov Substitution
 
-Derived classes must be substitutable for their base classes. A nice example using C++ would be using pointers, functions that use pointers from base class can use objects from derived classes without knowing it.
+Derived classes must be substitutable for their base classes. A nice example
+using C++ would be using pointers, functions that use pointers from base 
+class can use objects from derived classes without knowing it.
 
 #+begin_src C++
 
@@ -204,9 +211,10 @@ class Eagle: public Bird, public FlightfulBird {
 
 source code based on: [[https://www.tomdalling.com/blog/software-design/solid-class-design-the-liskov-substitution-principle/][SOLID Class Design: The Liskov Substitution Principle]]
 
-**** ISP - The Interface Segregation Principle
+*** ISP - The Interface Segregation Principle
 
-Make fine grained interfaces that are client specific. Clients should not be forced to depend on ippon interfaces that they not use.
+Make fine grained interfaces that are client specific. Clients should
+not be forced to depend on ippon interfaces that they not use.
 
 #+begin_src C++
 
@@ -252,7 +260,8 @@ class EconomicPrinterDevice(): ISmartDevice {
 
 *Problem:*
 
-(1) If we inherit from ISmartDevice we have to override all methods even it we don't use it. What leads to empty methods, bad returns code, ....
+(1) If we inherit from ISmartDevice we have to override all methods even it
+we don't use it. What leads to empty methods, bad returns code, ....
 
 *Solution:*
 
@@ -287,18 +296,18 @@ class EconomicPrinterDevice: public IPrinterDevice, public IScannerDevice{
 
 #+end_src
 
-**** DIP - The Dependency Inversion Principle
+*** DIP - The Dependency Inversion Principle
 ** Pack Cohesion (3)
-**** REP- The Release Reuse Equivalency
+*** REP- The Release Reuse Equivalency
 The granule of reuse is the granule of release
-**** CCP - The Common Closure Principle
+*** CCP - The Common Closure Principle
 Classes that change together are packed together
-**** CRP - The Common Reuse Principle
+*** CRP - The Common Reuse Principle
 Classes that are used together are packed together
 ** Couple Between Packaged (3)
-**** ADP - The Acyclic Dependencies Principle
+*** ADP - The Acyclic Dependencies Principle
 The dependency graph of packages must have no cycles
-**** SDP - The Stable Dependencies Principle 
+*** SDP - The Stable Dependencies Principle 
 Depend in direction of stability
-**** SAP - The Stable Abstractions Principle
+*** SAP - The Stable Abstractions Principle
 Abstractness increases with stability

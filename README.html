@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-07-25 Wed 21:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software Design Software Design Software Design Software Design</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Nelson Rodrigues Nelson Rodrigues Nelson Rodrigues Nelson Rodrigues" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Software Design Software Design Software Design Software Design</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7025da0">1. Object Oriented Design</a>
+<ul>
+<li><a href="#orgddd0593">1.1. Solid</a>
+<ul>
+<li><a href="#org675f546">1.1.1. S.O.L.I.D</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4b3a9e6">2. Design Patterns</a>
+<ul>
+<li><a href="#orge3c07b6">2.1. Gang of Four</a></li>
+<li><a href="#orge7388e8">2.2. Model View Controller (MVC)</a></li>
+<li><a href="#org2471499">2.3. Model-View-ViewModel (MVVM)</a></li>
+</ul>
+</li>
+<li><a href="#org0c20477">3. Refactor Techniques</a></li>
+<li><a href="#orga08478a">4. Links</a></li>
+</ul>
+</div>
+</div>
+<p>
+This is a broad topic, it could go from simple coding tricks to large scale system design.
+</p>
+
+<div id="outline-container-org7025da0" class="outline-2">
+<h2 id="org7025da0"><span class="section-number-2">1</span> Object Oriented Design</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Let's start from programming tips using Object Oriented paradigm. Some basic concepts like encapsulation, polymorphic behavior,&#x2026;, are the normative. The following topics talks about how to organize tour source code, to avoid repetitions and code smells.
+</p>
+</div>
+
+<div id="outline-container-orgddd0593" class="outline-3">
+<h3 id="orgddd0593"><span class="section-number-3">1.1</span> Solid</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+
+<div id="outline-container-org675f546" class="outline-4">
+<h4 id="org675f546"><span class="section-number-4">1.1.1</span> S.O.L.I.D</h4>
+<div class="outline-text-4" id="text-1-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="org1d5008d"></a>Class Design (5)<br />
+<ol class="org-ol">
+<li><a id="org2a50bc0"></a>SRP - The Single Responsibility Principle<br />
+<div class="outline-text-7" id="text-1-1-1-1-0-1">
+<p>
+The class should have one, and only one, reason to change. A class have higth cohesion if it's behaviours are coselly related.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++">
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">Integration</span> {
+<span style="color: #A52A2A; font-weight: bold;">private</span>:
+        <span style="color: #2F8B58; font-weight: bold;">bool</span> <span style="color: #00578E; font-weight: bold;">PaseXML</span>(<span style="color: #2F8B58; font-weight: bold;">Document</span> <span style="color: #0084C8; font-weight: bold;">doc</span>);     
+<span style="color: #A52A2A; font-weight: bold;">public</span>: 
+        <span style="color: #2F8B58; font-weight: bold;">bool</span> <span style="color: #00578E; font-weight: bold;">ImportData</span>(<span style="color: #2F8B58; font-weight: bold;">Document</span> <span style="color: #0084C8; font-weight: bold;">doc</span>);
+
+};
+
+
+<span style="color: #2F8B58; font-weight: bold;">bool</span> <span style="color: #F5666D;">Integration</span>::<span style="color: #00578E; font-weight: bold;">ImportData</span>(<span style="color: #2F8B58; font-weight: bold;">Document</span> <span style="color: #0084C8; font-weight: bold;">doc</span>){
+        <span style="color: #2F8B58; font-weight: bold;">bool</span> <span style="color: #0084C8; font-weight: bold;">result</span> = ParseXML(doc); <span style="color: #204A87;">// </span><span style="color: #204A87;">(2)</span>
+        ShowGUIDialogBox(result);    <span style="color: #204A87;">// </span><span style="color: #204A87;">(1)</span>
+        <span style="color: #A52A2A; font-weight: bold;">return</span> result;
+}
+
+<span style="color: #204A87;">/*</span>
+
+<span style="color: #204A87;">*Problems:*</span>
+
+<span style="color: #204A87;">(1) - This class has two function: parse a XML file and present on GUI the result</span>
+<span style="color: #204A87;">(2) - The paser works for XML files, and it we want to parse a JSON file this will lead to a major refactor</span>
+
+<span style="color: #204A87;">*Possible Solution:*</span>
+<span style="color: #204A87;">- (1) declouple classes by responsability adding a new levels os indirection</span>
+
+<span style="color: #204A87;">*/</span>
+
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">Integration</span> {
+<span style="color: #A52A2A; font-weight: bold;">private</span>:
+        <span style="color: #2F8B58; font-weight: bold;">bool</span> <span style="color: #00578E; font-weight: bold;">PaseXML</span>(<span style="color: #2F8B58; font-weight: bold;">Document</span> <span style="color: #0084C8; font-weight: bold;">doc</span>);     
+        <span style="color: #2F8B58; font-weight: bold;">IParser</span>* <span style="color: #0084C8; font-weight: bold;">_parser</span>;
+        <span style="color: #2F8B58; font-weight: bold;">GUI</span>* <span style="color: #0084C8; font-weight: bold;">_gui</span>;
+<span style="color: #A52A2A; font-weight: bold;">public</span>: 
+        <span style="color: #2F8B58; font-weight: bold;">bool</span> <span style="color: #00578E; font-weight: bold;">ImportData</span>(<span style="color: #2F8B58; font-weight: bold;">Document</span> <span style="color: #0084C8; font-weight: bold;">doc</span>);
+
+};
+
+
+<span style="color: #2F8B58; font-weight: bold;">bool</span> <span style="color: #F5666D;">Integration</span>::<span style="color: #00578E; font-weight: bold;">ImportData</span>(<span style="color: #2F8B58; font-weight: bold;">Document</span> <span style="color: #0084C8; font-weight: bold;">doc</span>){
+        <span style="color: #2F8B58; font-weight: bold;">bool</span> <span style="color: #0084C8; font-weight: bold;">result</span> =  _parser-&gt;importXMlFile(doc); <span style="color: #204A87;">//</span><span style="color: #204A87;">(1)</span>
+        _gui-&gt;printMessage(result);                 <span style="color: #204A87;">//</span><span style="color: #204A87;">(1)</span>
+        <span style="color: #A52A2A; font-weight: bold;">return</span> result; 
+}
+
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org0481a55"></a>OCP - The Open Closed Principle<br />
+<div class="outline-text-7" id="text-1-1-1-1-0-2">
+<p>
+You should be able to extend a class behaviour, without modifying it
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++">
+<span style="color: #A52A2A; font-weight: bold;">enum</span> <span style="color: #2F8B58; font-weight: bold;">FileType</span>
+{
+        <span style="color: #0084C8; font-weight: bold;">XML</span>, 
+        <span style="color: #0084C8; font-weight: bold;">JSON</span>
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">Integration</span> {
+<span style="color: #A52A2A; font-weight: bold;">public</span>:
+        <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">setFileType</span>(<span style="color: #2F8B58; font-weight: bold;">FileType</span> <span style="color: #0084C8; font-weight: bold;">ftype</span>);
+        <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Import</span>();
+<span style="color: #A52A2A; font-weight: bold;">private</span>:
+        <span style="color: #2F8B58; font-weight: bold;">FileType</span> <span style="color: #0084C8; font-weight: bold;">_fileType</span>;
+};
+
+
+<span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Integration</span>:setFileType(<span style="color: #2F8B58; font-weight: bold;">FileType</span> <span style="color: #0084C8; font-weight: bold;">ftype</span>){
+        _fileType = ftype;
+}
+
+<span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #F5666D;">Integration</span>::<span style="color: #00578E; font-weight: bold;">Import</span>() {
+        <span style="color: #A52A2A; font-weight: bold;">switch</span>(_ftype)  {   <span style="color: #204A87;">//</span><span style="color: #204A87;">(1)</span>
+                <span style="color: #A52A2A; font-weight: bold;">case</span> XML:
+                        ParseXML(...);
+                        <span style="color: #A52A2A; font-weight: bold;">break</span>;  
+                <span style="color: #A52A2A; font-weight: bold;">case</span> JSON:
+                        ParseJSON(...);
+                        <span style="color: #A52A2A; font-weight: bold;">break</span>;
+                \\...
+
+        }
+}
+
+<span style="color: #204A87;">/*</span>
+
+<span style="color: #204A87;">*Problems:*</span>
+
+<span style="color: #204A87;">Integration class is not closed to modification. Every time we need to import a new file type, we have to add a new enums, add new parser ...</span>
+
+
+<span style="color: #204A87;">*Possible solution:*</span>
+
+<span style="color: #204A87;">User inheritance and polimorphy to create multiple parsers with specific implementations acording the file type to import</span>
+
+<span style="color: #204A87;">*/</span>
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">IParser</span> {
+<span style="color: #A52A2A; font-weight: bold;">public</span>:
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #0084C8; font-weight: bold;">Import</span>(...) = 0;
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">XMLParser</span>: <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">IParser</span> {
+<span style="color: #A52A2A; font-weight: bold;">public</span>:
+        <span style="color: #00578E; font-weight: bold;">XMLParser</span>() = <span style="color: #A52A2A; font-weight: bold;">default</span>;
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #0084C8; font-weight: bold;">Import</span>(...) <span style="color: #A52A2A; font-weight: bold;">override</span>;                      
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">JSONParser</span>: <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">IParser</span> {
+<span style="color: #A52A2A; font-weight: bold;">public</span>:
+        <span style="color: #00578E; font-weight: bold;">JSONParser</span>() = <span style="color: #A52A2A; font-weight: bold;">default</span>;
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #0084C8; font-weight: bold;">Import</span>(...) <span style="color: #A52A2A; font-weight: bold;">final</span>;                 
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">Integration</span> {
+<span style="color: #A52A2A; font-weight: bold;">public</span>:
+        <span style="color: #00578E; font-weight: bold;">Integration</span>(<span style="color: #2F8B58; font-weight: bold;">shared_prt</span>&lt;<span style="color: #2F8B58; font-weight: bold;">IParser</span>&gt; <span style="color: #0084C8; font-weight: bold;">parser</span>)
+        <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">setFileType</span>(<span style="color: #2F8B58; font-weight: bold;">FileType</span> <span style="color: #0084C8; font-weight: bold;">ftype</span>);
+        <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Import</span>();
+<span style="color: #A52A2A; font-weight: bold;">private</span>:
+        <span style="color: #2F8B58; font-weight: bold;">shared_prt</span>&lt;<span style="color: #2F8B58; font-weight: bold;">IParser</span>&gt; <span style="color: #0084C8; font-weight: bold;">_parser</span>;
+};
+
+<span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #F5666D;">Integration</span>::<span style="color: #00578E; font-weight: bold;">Import</span>() {
+        parser-&gt;Import(...);
+}       
+
+<span style="color: #204A87;">// </span><span style="color: #204A87;">How to use it</span>
+
+<span style="color: #2F8B58; font-weight: bold;">Integration</span> <span style="color: #00578E; font-weight: bold;">integration</span>(make_shared&lt;XMLparser&gt;());
+
+<span style="color: #204A87;">// </span><span style="color: #204A87;">or</span>
+
+<span style="color: #2F8B58; font-weight: bold;">Integration</span> <span style="color: #00578E; font-weight: bold;">integration</span>(make_shared&lt;JSONparser&gt;());
+
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="orgb99a6eb"></a>LSP - The Liskov Substitution<br />
+<div class="outline-text-7" id="text-1-1-1-1-0-3">
+<p>
+Derived classes must be substitutable for their base classes. A nice example using C++ would be using pointers, functions that use pointers from base class can use objects from derived classes without knowing it.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++">
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">Bird</span> {
+<span style="color: #A52A2A; font-weight: bold;">public</span>:
+    <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">setLocation</span>(<span style="color: #2F8B58; font-weight: bold;">double</span> <span style="color: #0084C8; font-weight: bold;">longitude</span>, <span style="color: #2F8B58; font-weight: bold;">double</span> <span style="color: #0084C8; font-weight: bold;">latitude</span>) = 0;
+    <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">setAltitude</span>(<span style="color: #2F8B58; font-weight: bold;">double</span> <span style="color: #0084C8; font-weight: bold;">altitude</span>) = 0;
+    <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">draw</span>() = 0;
+};
+
+
+<span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #F5666D;">Penguin</span>::<span style="color: #00578E; font-weight: bold;">setAltitude</span>(<span style="color: #2F8B58; font-weight: bold;">double</span> <span style="color: #0084C8; font-weight: bold;">altitude</span>)
+{
+    <span style="color: #204A87;">//</span><span style="color: #204A87;">altitude can't be set because penguins can't fly</span>
+    <span style="color: #204A87;">//</span><span style="color: #204A87;">this function does nothing</span>
+}
+
+<span style="color: #204A87;">/*</span>
+
+<span style="color: #204A87;">*Problems:*</span>
+
+<span style="color: #204A87;">penguins can't fly so it's  a Object Oriented trap !!</span>
+
+<span style="color: #204A87;">*Solution:*</span>
+
+<span style="color: #204A87;">In C++ we can use multiple inheritance</span>
+
+<span style="color: #204A87;">*/</span>
+
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">Bird</span> {
+<span style="color: #A52A2A; font-weight: bold;">public</span>:
+    <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">draw</span>() = 0;
+    <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">setLocation</span>(<span style="color: #2F8B58; font-weight: bold;">double</span> <span style="color: #0084C8; font-weight: bold;">longitude</span>, <span style="color: #2F8B58; font-weight: bold;">double</span> <span style="color: #0084C8; font-weight: bold;">latitude</span>) = 0;
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">FlightfulBird</span> : <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">Bird</span> {
+<span style="color: #A52A2A; font-weight: bold;">public</span>:
+    <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">setAltitude</span>(<span style="color: #2F8B58; font-weight: bold;">double</span> <span style="color: #0084C8; font-weight: bold;">altitude</span>) = 0;
+};
+
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">Pengin</span>: <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">Bird</span> {
+        <span style="color: #204A87;">// </span><span style="color: #204A87;">...</span>
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">Eagle</span>: <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">Bird</span>, <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">FlightfulBird</span> {
+        <span style="color: #204A87;">// </span><span style="color: #204A87;">...</span>
+}
+
+</pre>
+</div>
+
+<p>
+source code based on: <a href="https://www.tomdalling.com/blog/software-design/solid-class-design-the-liskov-substitution-principle/">SOLID Class Design: The Liskov Substitution Principle</a>
+</p>
+</div>
+</li>
+
+<li><a id="org4ad918c"></a>ISP - The Interface Segregation Principle<br />
+<div class="outline-text-7" id="text-1-1-1-1-0-4">
+<p>
+Make fine grained interfaces that are client specific. Clients should not be forced to depend on ippon interfaces that they not use.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++">
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">ISmartDevice</span> {
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Print</span>() = 0;
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Fax</span>() = 0;
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Scan</span>() = 0;
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">MultiPrinterDevice</span>(): ISmartDevice {
+
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Print</span>() <span style="color: #A52A2A; font-weight: bold;">override</span> {
+                <span style="color: #204A87;">// </span><span style="color: #204A87;">do something ...     </span>
+        }
+
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Fax</span>() <span style="color: #A52A2A; font-weight: bold;">override</span> {
+                <span style="color: #204A87;">// </span><span style="color: #204A87;">do something ...     </span>
+        }
+
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Scan</span>() <span style="color: #A52A2A; font-weight: bold;">override</span> {
+                <span style="color: #204A87;">// </span><span style="color: #204A87;">do something ...     </span>
+        }
+};
+
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">EconomicPrinterDevice</span>(): ISmartDevice {
+
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Print</span>() {
+                <span style="color: #204A87;">// </span><span style="color: #204A87;">do something ...     </span>
+        }
+
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Fax</span>() {         <span style="color: #204A87;">// </span><span style="color: #204A87;">(1)</span>
+                <span style="color: #204A87;">// </span><span style="color: #204A87;">do nothing ...       </span>
+        }
+
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Scan</span>() {
+                <span style="color: #204A87;">// </span><span style="color: #204A87;">do something ...     </span>
+        }
+};
+
+
+<span style="color: #204A87;">/*</span>
+
+<span style="color: #204A87;">*Problem:*</span>
+
+<span style="color: #204A87;">(1) If we inherit from ISmartDevice we have to override all methods even it we don't use it. What leads to empty methods, bad returns code, ....</span>
+
+<span style="color: #204A87;">*Solution:*</span>
+
+<span style="color: #204A87;">Had new levels of indirections, e.g using multiple inheritance</span>
+
+<span style="color: #204A87;">*/</span>
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">IPrinterDevice</span> {
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Print</span>() = 0;
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">IFaxDevice</span> {
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Fax</span>() = 0;
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">IScannertDevice</span> {
+        <span style="color: #A52A2A; font-weight: bold;">virtual</span> <span style="color: #2F8B58; font-weight: bold;">void</span> <span style="color: #00578E; font-weight: bold;">Scan</span>() = 0;
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">MultiPrinterDevice</span>: <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">IPrinterDevice</span>, <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">IFaxDevice</span>, <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">IScannerDevice</span>{
+
+<span style="color: #204A87;">//</span><span style="color: #204A87;">...</span>
+
+};
+
+<span style="color: #A52A2A; font-weight: bold;">class</span> <span style="color: #2F8B58; font-weight: bold;">EconomicPrinterDevice</span>: <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">IPrinterDevice</span>, <span style="color: #A52A2A; font-weight: bold;">public</span> <span style="color: #2F8B58; font-weight: bold;">IScannerDevice</span>{
+
+<span style="color: #204A87;">//</span><span style="color: #204A87;">...</span>
+
+};
+
+
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org9fb3f07"></a>DIP - The Dependency Inversion Principle<br /></li>
+</ol>
+</li>
+<li><a id="org6df9bbb"></a>Pack Cohesion (3)<br />
+<ol class="org-ol">
+<li><a id="orgee14487"></a>REP- The Release Reuse Equivalency<br />
+<div class="outline-text-7" id="text-1-1-1-2-0-1">
+<p>
+The granule of reuse is the granule of release
+</p>
+</div>
+</li>
+<li><a id="orgacdd2ac"></a>CCP - The Common Closure Principle<br />
+<div class="outline-text-7" id="text-1-1-1-2-0-2">
+<p>
+Classes that change together are packed together
+</p>
+</div>
+</li>
+<li><a id="orgdd0f5ee"></a>CRP - The Common Reuse Principle<br />
+<div class="outline-text-7" id="text-1-1-1-2-0-3">
+<p>
+Classes that are used together are packed together
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org93ac9e3"></a>Couple Between Packaged (3)<br />
+<ol class="org-ol">
+<li><a id="orgbcf3252"></a>ADP - The Acyclic Dependencies Principle<br />
+<div class="outline-text-7" id="text-1-1-1-3-0-1">
+<p>
+The dependency graph of packages must have no cycles
+</p>
+</div>
+</li>
+<li><a id="orgcc73a10"></a>SDP - The Stable Dependencies Principle<br />
+<div class="outline-text-7" id="text-1-1-1-3-0-2">
+<p>
+Depend in direction of stability
+</p>
+</div>
+</li>
+<li><a id="org05ee361"></a>SAP - The Stable Abstractions Principle<br />
+<div class="outline-text-7" id="text-1-1-1-3-0-3">
+<p>
+Abstractness increases with stability
+</p>
+
+<ul class="org-ul">
+<li>S.O.L.I.D <a href="solid.html">link</a></li>
+
+<li>G.R.A.S.P.<a href="grasp.html">link</a></li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4b3a9e6" class="outline-2">
+<h2 id="org4b3a9e6"><span class="section-number-2">2</span> Design Patterns</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Design Patterns are common solutions to common problems. Some people are against it. However I think they are handy, special to recognize/share code developed by other programmers. 
+</p>
+</div>
+
+<div id="outline-container-orge3c07b6" class="outline-3">
+<h3 id="orge3c07b6"><span class="section-number-3">2.1</span> Gang of Four</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+<a href="dp.html">Gof</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge7388e8" class="outline-3">
+<h3 id="orge7388e8"><span class="section-number-3">2.2</span> Model View Controller (MVC)</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+This design architectural pattern is very common, used on apple related apps, Asp.net, Qt Apps ("well sort of &#x2026;")
+</p>
+
+<p>
+<a href="https://github.com/NelsonBilber/Qt/tree/master/QTableViewClicks">QTable</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2471499" class="outline-3">
+<h3 id="org2471499"><span class="section-number-3">2.3</span> Model-View-ViewModel (MVVM)</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+A tailored version of MVC and Model View Presenter (MVP) for Windows Presentation Application (WPF)
+</p>
+
+<p>
+<a href="https://github.com/NelsonBilber/design.patterns.MVVM">Source Code</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0c20477" class="outline-2">
+<h2 id="org0c20477"><span class="section-number-2">3</span> Refactor Techniques</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Well most of time we are doing some refactor with the aim to improve the source code to avoid the problematic technical debt. 
+</p>
+
+<p>
+Next link describe some techniques that we could use:	 
+</p>
+
+<p>
+<a href="refactor.html">Clean Code</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga08478a" class="outline-2">
+<h2 id="orga08478a"><span class="section-number-2">4</span> Links</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">S.O.L.I.D.</a> <a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">PrinciplesOfOod (Uncle Bob)</a> <a href="https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)">G.R.A.S.P. (wikipedia)</a> <a href="https://pt.wikipedia.org/wiki/GRASP_(padr%C3%A3o_orientado_a_objetos)#CITEREFLarman2005">G.R.A.S.P.</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Nelson Rodrigues Nelson Rodrigues Nelson Rodrigues Nelson Rodrigues</p>
+<p class="date">Created: 2018-07-25 Wed 21:25</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

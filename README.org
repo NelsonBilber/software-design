@@ -9,13 +9,6 @@ Let's start from programming tips using Object Oriented paradigm. Some basic con
 
 *** Solid
 
-#+INCLUDE: ./solid.org
-
-#+Setupfile: ./solid.org
-
-#+Setupfile: solid.org
-
-
 - S.O.L.I.D [[file:solid.org][link]]
 
 - G.R.A.S.P.[[file:grasp.org][link]]
