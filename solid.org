@@ -181,7 +181,7 @@ virtual Penguin::setAltitude(double altitude)
 
 Problems:
 
-Penguins can't fly so it's  a Object Oriented trap !!
+Penguins can't fly so it's  an Object Oriented trap !!
 
 Solution:
  
