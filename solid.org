@@ -107,7 +107,7 @@ new file type, we have to add a new enums, add new parser ...
 
 Possible solution:
 
-User inheritance and polimorphy to create multiple parsers with specific
+Use inheritance and polymorphism to create multiple parsers with specific
 implementations acording the file type to import
 
 */
@@ -324,19 +324,19 @@ Add a middle man, and Interface that can had a new level of indirection
 
 */
 
-class Device {
+class IDevice {
 public:
-	void TurnOn();
-	void TurnOff();
+	virtual void TurnOn() = 0;
+	virtual void TurnOff() = 0;
 };
 
-class Light: public Device {
+class Light: public IDevice {
 public:
-	void TurnOn() {
+	virtual void TurnOn() {
 		// Do Something ...
 	}
 	
-	void TurnOff() {
+	virtual void TurnOff() {
 		// Do Something ... 
 	}
 };
