@@ -1,7 +1,7 @@
 #+TITLE: Software Design
 #+AUTHOR: Nelson Rodrigues
 
-* S.O.L.I.D
+* S.O.L.I.D.
 ** Class Design (5)
 *** SRP - The Single Responsibility Principle
 
